@@ -19,14 +19,15 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-        if (!Auth::attempt($request->only('email', 'password'), $request->remember)) {
+        if (! Auth::attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('error', 'Email and/or password are incorrect.');
         }
 
         $request->session()->regenerate();
+
         return redirect('/');
     }
 

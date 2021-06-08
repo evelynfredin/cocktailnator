@@ -42,4 +42,9 @@ return [
         'redirect' => env('TWITTER_REDIRECT_URI'),
     ],
 
+    'cocktaildb' => [
+        'key' => env('COCKTAILDB_API_KEY'),
+        'endpoint' => 'https://www.thecocktaildb.com/api/json/v2/'
+    ],
+
 ];

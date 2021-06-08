@@ -13,7 +13,7 @@
     <header class="py-8 border-b">
         <div class="flex justify-between items-center container mx-auto px-5 md:px-0">
             <div class="text-2xl font-black">
-                Cocktailnator
+                <a href="{{ route('home') }}">Cocktailnator</a>
             </div>
             <nav class="flex items-center">
                 <button aria-label="Open menu" class="inline-flex md:hidden btnMenu hover:bg-gray-200 rounded-full p-2">
@@ -25,6 +25,7 @@
                 <ul class="md:flex hidden space-x-9 text-gray-500">
                     @auth
                         <li>Welcome, {{ auth()->user()->name }}!</li>
+                        <li><a href="/logout" class="uppercase font-bold text-indigo-600">Logout</a></li>
                     @endauth
                     @guest
                         <li><a href="{{ route('login') }}" class="hover:text-gray-800">Log in</a></li>

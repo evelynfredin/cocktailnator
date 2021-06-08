@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 a,
 button {
@@ -24,4 +25,22 @@ input:focus {
     @apply bg-gray-50;
 }
 
-@tailwind utilities;
+.card {
+    @apply rounded-xl text-white bg-indigo-500 mb-10;
+}
+
+.card:hover {
+    @apply bg-indigo-800 shadow-xl;
+}
+
+.card:hover > img {
+    @apply filter animate-pulse;
+}
+
+.card:hover > div > h3 {
+    @apply text-indigo-300;
+}
+
+.card:hover > div > p {
+    @apply text-indigo-200;
+}

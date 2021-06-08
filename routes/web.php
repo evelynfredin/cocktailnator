@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Data\CocktailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('search', function () {
+    return view('pages.search');
+})->name('search');
+
+Route::get('/', [CocktailController::class, 'index'])->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('signup', [RegisterController::class, 'index'])->name('signup');
@@ -28,4 +31,4 @@ Route::middleware(['guest'])->group(function () {
     Route::get('login/{provider}', [LoginController::class, 'redirectToProvider']);
     Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback']);
 });
-Route::post('logout', [LogoutController::class])->name('logout');
+Route::get('logout', LogoutController::class);

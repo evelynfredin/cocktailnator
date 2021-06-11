@@ -6,6 +6,7 @@
         <x-status />
     </div>
 
+
     <!-- Hero -->
     <div class="container mx-auto text-left md:text-center mt-10 px-5">
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-black leading-15 tracking-tight">
@@ -34,15 +35,33 @@
                 <div class="grid grid-cols-1 lg:grid-cols-3 mt-10 gap-6 h-auto">
 
                     @foreach ($drinks as $drink)
+                    <div class="card transition duration-500 ease-in-out transform flex flex-col justify-between">
                         <a href="#">
-                            <div class="card transition duration-500 ease-in-out transform">
-                                <img class="rounded-t-xl w-full h-[300px] object-cover object-center" src="{{ $drink['strDrinkThumb'] }}" alt="">
-                                <div class="mt-2 p-7">
-                                    <h3 class="mb-5 text-3xl font-bold transition duration-300 ease-in-out transform">{{ $drink['strDrink'] }}</h3>
-                                    <p>{{ Str::limit($drink['strInstructions'], 100) }}</p>
-                                </div>
+                            <img class="rounded-t-xl w-full h-[300px] object-cover object-center" src="{{ $drink['strDrinkThumb'] }}" alt="">
+
+                            <div class="p-7">
+                                <h3 class="mb-5 text-3xl font-bold transition duration-300 ease-in-out transform">{{ $drink['strDrink'] }}</h3>
+                                <p>{{ Str::limit($drink['strInstructions'], 80) }}</p>
                             </div>
                         </a>
+                        <div class="flex justify-between px-7 mb-5">
+                            <a href="#">
+                                <span class="hover:text-indigo-300">
+                                View recipe
+                            </span>
+                            </a>
+                        @auth
+                        <form action="{{ route('favorite', $drink['idDrink']) }}" method="POST">
+                            @csrf
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-indigo-300 hover:fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </button>
+                        </form>
+                        @endauth
+                        </div>
+                    </div>
                     @endforeach
                 </div>
                 <!-- / Card grid -->
@@ -67,15 +86,33 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-6 h-auto">
 
                     @foreach ($popularDrinks as $popularDrink)
+                    <div class="card transition duration-500 ease-in-out transform flex flex-col justify-between">
                         <a href="#">
-                            <div class="card transition duration-500 ease-in-out transform h-auto">
-                                <img class="rounded-t-xl w-full h-[300px] object-cover object-center" src="{{ $popularDrink['strDrinkThumb'] }}" alt="">
-                                <div class="mt-2 p-7">
-                                    <h3 class="mb-5 text-3xl font-bold transition duration-300 ease-in-out transform">{{ $popularDrink['strDrink'] }}</h3>
-                                    <p>{{ Str::limit($popularDrink['strInstructions'], 100) }}</p>
-                                </div>
+                            <img class="rounded-t-xl w-full h-[300px] object-cover object-center" src="{{ $popularDrink['strDrinkThumb'] }}" alt="">
+
+                            <div class="p-7">
+                                <h3 class="mb-5 text-3xl font-bold transition duration-300 ease-in-out transform">{{ $popularDrink['strDrink'] }}</h3>
+                                <p>{{ Str::limit($popularDrink['strInstructions'], 80) }}</p>
                             </div>
                         </a>
+                        <div class="flex justify-between px-7 mb-5">
+                            <a href="#">
+                                <span class="hover:text-indigo-300">
+                                View recipe
+                            </span>
+                            </a>
+                        @auth
+                        <form action="{{ route('favorite', $drink['idDrink']) }}" method="POST">
+                            @csrf
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-indigo-300 hover:fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                            </button>
+                        </form>
+                        @endauth
+                        </div>
+                    </div>
                     @endforeach
                 </div>
                 <!-- / Card grid -->

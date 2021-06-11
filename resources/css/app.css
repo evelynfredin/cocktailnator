@@ -11,7 +11,6 @@ button {
     @apply bg-indigo-500 p-3 rounded-md text-white;
 }
 
-input:focus,
 .btn:focus,
 .btnMenu:focus {
     @apply outline-none ring-2 ring-offset-2 ring-indigo-500;
@@ -33,11 +32,11 @@ input:focus {
     @apply bg-indigo-800 shadow-xl;
 }
 
-.card:hover > img {
+.card:hover > a > img {
     @apply filter animate-pulse;
 }
 
-.card:hover > div > h3 {
+.card:hover > a > div > h3 {
     @apply text-indigo-300;
 }
 

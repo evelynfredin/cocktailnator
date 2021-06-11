@@ -20,7 +20,6 @@ class CocktailController extends Controller
 
     public function index()
     {
-
         $key = config('services.cocktaildb.key');
         $rootUrl = config('services.cocktaildb.endpoint');
         $getRecentDrinks = Http::get($rootUrl . $key . '/recent.php')->json();

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    static function getAuthUserFavorites()
+    public static function getAuthUserFavorites()
     {
         return Favorite::where('user_id', Auth::id())->get();
     }

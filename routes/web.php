@@ -8,7 +8,7 @@ use App\Http\Controllers\Data\FavoriteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CocktailController::class, 'index'])->name('home');
-
+Route::get('drink/{drink:id}', [CocktailController::class, 'show'])->name('drink');
 // Move this to its rightful place after search fn is implemented
 Route::get('search', function () {
     return view('pages.search');
@@ -26,4 +26,5 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('logout', LogoutController::class);
     Route::post('addfavorite/{drink:id}', [FavoriteController::class, 'store'])->name('favorite');
+    Route::delete('removefavorite/{drink:id}', [FavoriteController::class, 'destroy'])->name('delete');
 });
